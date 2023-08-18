@@ -20,8 +20,8 @@ function player_update(){
 function new_image(get_image){
     fabric.Image.fromURL(get_image,function(Img){
         block_img_object=Img;
-        block_img_object.scaleToWidth(150);
-        block_img_object.scaleToHeight(140);
+        block_img_object.scaleToWidth(block_img_width);
+        block_img_object.scaleToHeight(block_img_height);
         block_img_object.set({
             top:playerY,
             left:playerX
@@ -85,4 +85,40 @@ if (keyPressed=='85'){
 if (keyPressed=='67'){
     new_image('cloud.jpg');
 }
+}
+function Up() {
+    if(playerY >=0){
+        playerY = playerY-block_img_height;
+        console.log("block image height="+block_img_height);
+        console.log("When Up arrow key is pressed, X ="+playerX+",Y="+playerY);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+function Down(){
+    if(playerY <=500){
+        playerY=playerY+block_img_height;
+        console.log("block image height="+block_img_height);
+        console.log("When down arrow key is pressed, X="+playerX+",Y="+playerY);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+function left(){
+    if(playerX >=0){
+        playerX=playerX-block_img_width;
+        console.log("block image width="+block_img_width);
+        console.log("When down arrow key is pressed, X="+playerX+",Y="+playerY);
+        canvas.remove(player_object);
+        player_update();
+    }
+}
+function Right(){
+    if(playerX <=950){
+        playerX=playerX+block_img_width;
+        console.log("block image width="+block_img_width);
+        console.log("When down arrow key is pressed, X="+playerX+",Y="+playerY);
+        canvas.remove(player_object);
+        player_update();
+    }
 }
